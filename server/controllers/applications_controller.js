@@ -28,5 +28,33 @@ apps.post('/add', (req, res) => {
   })
 })
 
+////////////////////////////
+////// Update Route ////////
+////////////////////////////
+apps.put('/:id', (req, res) => {
+  Application.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {new:true},
+    (err, updatedApp) => {
+      res.json(updatedApp)
+    }
+  )
+})
+
+////////////////////////////
+////// Delete Route ////////
+////////////////////////////
+apps.delete('/:id', (req, res) => {
+  Application.findByIdAndRemove(
+    req.params.id,
+    (err, deletedApp) => {
+      Application.find({}, (err, allApps) => {
+        res.json(allApps)
+      })
+    }
+  )
+})
+
 
 module.exports = apps
