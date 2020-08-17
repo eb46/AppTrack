@@ -1,0 +1,38 @@
+const express = require('express')
+const mongoose = require('mongoose')
+const db = mongoose.connection
+
+require('dotenv').config()
+
+const app = express()
+const PORT = process.env.PORT || 8000
+
+
+// Middleware
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(express.static('public'))
+
+
+// Database connection, uses the MongoDB URI from the .env file
+const MONGODB_URI = process.env.MONGODB_URI
+
+
+// Connect to Mongo &
+// Fix Depreciation Warnings from Mongoose
+// May or may not need these depending on your Mongoose version
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }
+);
+
+
+// Error / success for MongoDB connection
+db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
+db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
+
+
+
+app.listen(PORT, () => {
+  console.log('listening on port: ' + PORT);
+})
