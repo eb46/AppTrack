@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 8000
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(express.static('public'))
 
 
 // Database connection, uses the MongoDB URI from the .env file
@@ -31,6 +30,9 @@ db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 
+// Controllers
+const applications = require('./controllers/applications')
+app.use('/applications', applications)
 
 
 app.listen(PORT, () => {
