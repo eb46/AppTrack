@@ -31,7 +31,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 
 // Controllers
-const applications = require('./controllers/applications')
+const applications = require('./controllers/applications_controller')
 app.use('/applications', applications)
 
 
