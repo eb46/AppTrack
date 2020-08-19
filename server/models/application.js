@@ -7,7 +7,7 @@ const appSchema = new mongoose.Schema(
     jobTitle: {type: String, required: true},
     company: {type: String, required: true},
     location: {type: String, required: true},
-    link: {type: String, required: true}
+    link: {type: String, required: false}
   }
 )
 

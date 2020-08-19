@@ -36,6 +36,23 @@ class App extends React.Component {
     )
   }
 
+  handleDelete = (deletedApp) => {
+    console.log('deleting');
+    console.log(deletedApp._id);
+    axios
+      .delete('/applications/' + deletedApp._id)
+      .then(() => {
+        this.setState((state) => {
+          const apps = state.apps.filter((app, index) => {
+            return app._id !== deletedApp._id
+          })
+          return { apps }
+        })
+      })
+      .catch(error => console.log(error))
+      this.getApps()
+  }
+
   toggleAdd = () => {
     this.setState((prevState) => {
       return {showAdd: !prevState.showAdd}
@@ -49,6 +66,7 @@ class App extends React.Component {
           getApps={this.getApps}
           apps={this.state.apps}
           handleSubmit={this.handleAdd}
+          handleDelete={this.handleDelete}
           toggleAdd={this.toggleAdd}
           showAdd={this.state.showAdd}
         />
