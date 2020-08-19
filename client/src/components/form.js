@@ -69,7 +69,7 @@ class Form extends React.Component {
         <Input
           handleChange={this.handleChange}
           name={'dateSubmitted'}
-          type={'text'}
+          type={'date'}
           value={this.state.dateSubmitted}
           id={'dateSubmitted'}
           placeholder={'Date Submitted'}
