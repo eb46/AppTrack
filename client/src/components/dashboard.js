@@ -1,15 +1,29 @@
 import React from 'react'
 import axios from 'axios'
 import Application from './application'
+import Form from './form'
 
-function Form(props) {
-  const { getApps, apps } = props
+function Dashboard(props) {
+  const { getApps, handleSubmit, toggleAdd, showAdd, apps } = props
 
   return(
     <div>
       <button onClick={getApps}>
         Get Data
       </button>
+      <button onClick={toggleAdd}>
+        Add App
+      </button>
+
+      {
+        showAdd
+        ?
+        <Form
+          handleSubmit={handleSubmit}
+        />
+        :
+        null
+      }
 
       <div>
         {apps.map((app, index) =>
@@ -23,4 +37,4 @@ function Form(props) {
   )
 }
 
-export default Form
+export default Dashboard

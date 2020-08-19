@@ -4,7 +4,8 @@ import Dashboard from './components/dashboard'
 
 class App extends React.Component {
   state = {
-    apps: []
+    apps: [],
+    showAdd: false
   }
 
   getApps = () => {
@@ -21,12 +22,35 @@ class App extends React.Component {
     console.log('component mount working');
   }
 
+  handleAdd = (event, formInputs) => {
+    axios
+      .post('/applications/add', formInputs)
+      .then(jsonApps => {
+        this.setState({
+          apps: [jsonApps.data, ...this.state.apps]
+        })
+        this.getApps()
+        // console.log(this.state.apps);
+        console.log(jsonApps.data);
+      }
+    )
+  }
+
+  toggleAdd = () => {
+    this.setState((prevState) => {
+      return {showAdd: !prevState.showAdd}
+    })
+  }
+
   render() {
     return (
       <div>
         <Dashboard
           getApps={this.getApps}
           apps={this.state.apps}
+          handleSubmit={this.handleAdd}
+          toggleAdd={this.toggleAdd}
+          showAdd={this.state.showAdd}
         />
       </div>
     )
