@@ -8,6 +8,7 @@ class App extends React.Component {
     showAdd: false
   }
 
+  // READ Rest route. Reads the existing data from the db
   getApps = () => {
     axios
       .get('/applications')
@@ -17,11 +18,13 @@ class App extends React.Component {
     )
   }
 
+  // React function that runs upon pageload
   componentDidMount(){
     this.getApps()
     console.log('component mount working');
   }
 
+  // ADD REST route. Takes the response as the formInputs and takes a copy of the existing data and adds the new data from the formInputs
   handleAdd = (event, formInputs) => {
     axios
       .post('/applications/add', formInputs)
@@ -36,6 +39,7 @@ class App extends React.Component {
     )
   }
 
+  // DELETE REST route. Looks for the _id in db and returns all the apps except for the deletedApp
   handleDelete = (deletedApp) => {
     console.log('deleting');
     console.log(deletedApp._id);
@@ -53,6 +57,7 @@ class App extends React.Component {
       this.getApps()
   }
 
+  // Sets the state used to reveal form to add app entries
   toggleAdd = () => {
     this.setState((prevState) => {
       return {showAdd: !prevState.showAdd}
