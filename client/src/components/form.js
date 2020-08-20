@@ -79,7 +79,7 @@ class Form extends React.Component {
           name={'jobTitle'}
           type={'text'}
           value={this.state.jobTitle}
-          id={'dateSubmitted'}
+          id={'jobTitle'}
           placeholder={'Job Title'}
         /><br/>
         <Input
@@ -87,7 +87,7 @@ class Form extends React.Component {
           name={'company'}
           type={'text'}
           value={this.state.company}
-          id={'dateSubmitted'}
+          id={'company'}
           placeholder={'Company'}
         /><br/>
         <Input
@@ -95,7 +95,7 @@ class Form extends React.Component {
           name={'location'}
           type={'text'}
           value={this.state.location}
-          id={'dateSubmitted'}
+          id={'location'}
           placeholder={'Location'}
         /><br/>
         <Input
@@ -103,7 +103,7 @@ class Form extends React.Component {
           name={'link'}
           type={'text'}
           value={this.state.link}
-          id={'dateSubmitted'}
+          id={'link'}
           placeholder={'App Link'}
         /><br/>
         <Input
