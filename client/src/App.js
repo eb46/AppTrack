@@ -26,6 +26,7 @@ class App extends React.Component {
 
   // ADD REST route. Takes the response as the formInputs and takes a copy of the existing data and adds the new data from the formInputs
   handleAdd = (event, formInputs) => {
+    console.log(formInputs);
     axios
       .post('/applications/add', formInputs)
       .then(jsonApps => {
@@ -57,6 +58,17 @@ class App extends React.Component {
       this.getApps()
   }
 
+  // UPDATE REST route.
+  handleUpdate = (event, formInputs) => {
+    console.log('update route working')
+    event.preventDefault()
+    axios
+      .put('/applications/' + formInputs.id, formInputs)
+      .then(() => {
+        this.getApps()
+      })
+  }
+
   // Sets the state used to reveal form to add app entries
   toggleAdd = () => {
     this.setState((prevState) => {
@@ -72,6 +84,7 @@ class App extends React.Component {
           apps={this.state.apps}
           handleSubmit={this.handleAdd}
           handleDelete={this.handleDelete}
+          handleUpdate={this.handleUpdate}
           toggleAdd={this.toggleAdd}
           showAdd={this.state.showAdd}
         />

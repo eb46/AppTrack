@@ -35,6 +35,8 @@ class Form extends React.Component {
     // console.log(event.target.value);
   }
 
+  // explicity show what is being passed in
+  // this function will get lifted all the way back to the app component, that will allow the main list to update after this
   handleSubmit(event){
     event.preventDefault()
     this.props.handleSubmit(event, {
@@ -43,8 +45,12 @@ class Form extends React.Component {
       jobTitle: this.state.jobTitle,
       company: this.state.company,
       location: this.state.location,
-      link: this.state.link
+      link: this.state.link,
+
+      // Important! Be sure to grab ID from props so formInputs on handleUpdate function work.
+      id: this.props.app._id
     })
+    // This clears the form after submitting
     this.setState({
       status: '',
       dateSubmitted: '',
@@ -53,9 +59,15 @@ class Form extends React.Component {
       location: '',
       link: ''
     })
+    // if this is an edit form, change the view back
+    if (this.props.app) {
+      this.props.toggleForm()
+    }
   }
 
   render(){
+    // Used to check app._id when clicking on Edit button
+    // console.log(this.props.app._id)
     return(
       <form onSubmit={this.handleSubmit}>
         <Input
@@ -106,10 +118,11 @@ class Form extends React.Component {
           id={'link'}
           placeholder={'App Link'}
         /><br/>
-        <Input
+        <input
           type={'submit'}
-          value={'Add'}
+          value={this.props.app ? 'Update' : 'Add'}
         /><br/>
+        {this.props.children}
       </form>
     )
   }

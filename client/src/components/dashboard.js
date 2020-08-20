@@ -4,7 +4,7 @@ import Application from './application'
 import Form from './form'
 
 function Dashboard(props) {
-  const { getApps, handleSubmit, handleDelete, toggleAdd, showAdd, apps } = props
+  const { getApps, handleSubmit, handleDelete, handleUpdate, toggleAdd, showAdd, apps } = props
 
   return(
     <div>
@@ -24,10 +24,11 @@ function Dashboard(props) {
       }
 
       <div>
-        {apps.map((app, index) =>
+        {apps.map((app) =>
           <Application
             handleDelete={handleDelete}
-            key={index}
+            handleUpdate={handleUpdate}
+            key={app._id}
             app={app}
           />
         )}

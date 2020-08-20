@@ -9,19 +9,12 @@ class Edit extends React.Component {
   }
 
   // Update REST route
-  updateApp = event => {
+  updateApp = (event, formInputs) => {
+    event.preventDefault()
     const id = event.target.getAttribute('id')
     axios
-      .put('/applications/' + id,
-        {
-          status: this.state.updateStatus,
-          dateSubmitted: this.state.updateDate,
-          jobTitle: this.state.updateTitle,
-          company: this.state.updateCompany,
-          location: this.state.updateLocation,
-          link: this.state.updateLink
-        }
-      ).then(
+      .put('/applications/' + id, formInputs)
+      .then(
           response => {
             this.setState({
               apps: response.data
@@ -75,7 +68,7 @@ class Edit extends React.Component {
 
 
   render(){
-    const { apps } = this.props
+    const { app } = this.props
     return(
       <div>
         <button onClick={this.toggleEditForm}>
@@ -83,7 +76,7 @@ class Edit extends React.Component {
         </button>
         { this.state.editForm
           ?
-          <form id={apps._id} onSubmit={this.updateApp}>
+          <form id={app._id} onSubmit={this.updateApp}>
             <Input
               name={'status'}
               type={'text'}
@@ -125,6 +118,10 @@ class Edit extends React.Component {
               value={this.state.updateLink}
               id={'link'}
               placeholder={'Link'}
+            /><br/>
+            <Input
+              type={'submit'}
+              value={'Edit'}
             /><br/>
           </form>
           :
