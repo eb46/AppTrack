@@ -92,20 +92,43 @@ class Edit extends React.Component {
               placeholder={'Status'}
             /><br/>
             <Input
-              name={'status'}
+              name={'dateSubmitted'}
               type={'text'}
-              value={this.state.updateStatus}
-              id={'status'}
-              placeholder={'Status'}
+              value={this.state.updateDate}
+              id={'dateSubmitted'}
+              placeholder={'Date Submitted'}
             /><br/>
             <Input
-              name={'status'}
+              name={'jobTitle'}
               type={'text'}
-              value={this.state.updateStatus}
-              id={'status'}
-              placeholder={'Status'}
+              value={this.state.updateTitle}
+              id={'jobTitle'}
+              placeholder={'Job Title'}
+            /><br/>
+            <Input
+              name={'company'}
+              type={'text'}
+              value={this.state.updateCompany}
+              id={'company'}
+              placeholder={'Company'}
+            /><br/>
+            <Input
+              name={'location'}
+              type={'text'}
+              value={this.state.updateLocation}
+              id={'location'}
+              placeholder={'Location'}
+            /><br/>
+            <Input
+              name={'link'}
+              type={'text'}
+              value={this.state.updateLink}
+              id={'link'}
+              placeholder={'Link'}
             /><br/>
           </form>
+          :
+          null
         }
       </div>
     )
