@@ -16,7 +16,7 @@ class Application extends React.Component {
   render(){
     const { app, handleDelete, handleUpdate } = this.props
     return(
-      <div className="application-container">
+      <>
         <div className="application-data">
           <h5>{app.status}</h5>
           <h5>{app.dateSubmitted}</h5>
@@ -50,7 +50,7 @@ class Application extends React.Component {
             null
           }
         </div>
-      </div>
+      </>
     )
   }
 }

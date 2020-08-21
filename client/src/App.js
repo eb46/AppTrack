@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import Dashboard from './components/dashboard'
+import Form from './components/form'
+import AddButton from './components/addButton'
 
 class App extends React.Component {
   state = {
@@ -78,7 +80,22 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
+        <AddButton
+          toggleAdd={this.toggleAdd}
+        />
+
+        {
+          this.state.showAdd
+          ?
+          <Form
+            handleSubmit={this.handleAdd}
+            toggleAdd={this.toggleAdd}
+          />
+          :
+          null
+        }
+
         <Dashboard
           getApps={this.getApps}
           apps={this.state.apps}
