@@ -1,7 +1,19 @@
+$sky-blue: rgb(42, 182, 246);
+
 body {
   padding: 0;
   margin: 0;
   height: 100%;
+}
+
+.nav-container {
+  display: flex;
+  width: auto;
+
+  .logo {
+    height: 5em;
+    width: 5em;
+  }
 }
 
 .application-container {
@@ -9,10 +21,32 @@ body {
 }
 
 .add-app-button {
-  background-color: blue;
-  border: none;
-  border-radius: 20px;
-  color: white;
+  background-color: white;
+  border-color: $sky-blue;
+  border-radius: 5em;
+  color: $sky-blue;
+  font-size: 14px;
+  width: 10em;
+  height: 4em;
+
+  &:hover {
+    background-color: $sky-blue;
+    color: white;
+  }
+}
+
+.application-form {
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: auto;
 }
 
 

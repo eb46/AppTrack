@@ -3,6 +3,7 @@ import axios from 'axios'
 import Dashboard from './components/dashboard'
 import Form from './components/form'
 import AddButton from './components/addButton'
+import Nav from './components/nav'
 
 class App extends React.Component {
   state = {
@@ -81,7 +82,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="main-container">
-        <AddButton
+        <Nav
           toggleAdd={this.toggleAdd}
         />
 

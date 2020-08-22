@@ -4,15 +4,45 @@ body {
   height: 100%;
 }
 
+.nav-container {
+  display: flex;
+  width: auto;
+}
+.nav-container .logo {
+  height: 5em;
+  width: 5em;
+}
+
 .application-container {
   border: 1px solid black;
 }
 
 .add-app-button {
-  background-color: blue;
-  border: none;
-  border-radius: 20px;
+  background-color: white;
+  border-color: #2ab6f6;
+  border-radius: 5em;
+  color: #2ab6f6;
+  font-size: 14px;
+  width: 10em;
+  height: 4em;
+}
+.add-app-button:hover {
+  background-color: #2ab6f6;
   color: white;
+}
+
+.application-form {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: auto;
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
