@@ -85,14 +85,23 @@ class Form extends React.Component {
         className="application-form"
         onSubmit={this.handleSubmit}
       >
-        <Input
-          handleChange={this.handleChange}
-          name={'status'}
-          type={'text'}
+        <label for="status">Status: </label>
+        <select
+          onChange={this.handleChange}
           value={this.state.status}
+          name={'status'}
           id={'status'}
-          placeholder={'Status'}
-        /><br/>
+        >
+          <option value="Sent">
+            Sent
+          </option>
+          <option value="Interview scheduled">
+            Interview scheduled
+          </option>
+          <option value="Offered">
+            Offered
+          </option>
+        </select>
         <Input
           handleChange={this.handleChange}
           name={'dateSubmitted'}

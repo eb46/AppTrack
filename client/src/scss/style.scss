@@ -36,17 +36,18 @@ body {
 }
 
 .application-form {
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.1);
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: 100%;
-  width: 100%;
+  height: 50vh;
+  width: 100vw;
   z-index: 1;
   overflow: auto;
+
 }
 
 
