@@ -35,16 +35,38 @@ class Form extends React.Component {
     // console.log(event.target.value);
   }
 
+  // explicity show what is being passed in
+  // this function will get lifted all the way back to the app component, that will allow the main list to update after this
   handleSubmit(event){
     event.preventDefault()
-    this.props.handleSubmit(event, {
-      status: this.state.status,
-      dateSubmitted: this.state.dateSubmitted,
-      jobTitle: this.state.jobTitle,
-      company: this.state.company,
-      location: this.state.location,
-      link: this.state.link
-    })
+    if (this.props.app) {
+      this.props.handleSubmit(event, {
+        status: this.state.status,
+        dateSubmitted: this.state.dateSubmitted,
+        jobTitle: this.state.jobTitle,
+        company: this.state.company,
+        location: this.state.location,
+        link: this.state.link,
+
+        // Important! Be sure to grab ID from props so formInputs on handleUpdate function work.
+        id: this.props.app._id
+      })
+      // if this is an edit form, change the view back
+      this.props.toggleForm()
+    } else {
+      console.log(this.props);
+      this.props.handleSubmit(event, {
+        status: this.state.status,
+        dateSubmitted: this.state.dateSubmitted,
+        jobTitle: this.state.jobTitle,
+        company: this.state.company,
+        location: this.state.location,
+        link: this.state.link,
+      })
+      // if this is an add form, change the view back
+      this.props.toggleAdd()
+    }
+    // This clears the form after submitting
     this.setState({
       status: '',
       dateSubmitted: '',
@@ -56,8 +78,13 @@ class Form extends React.Component {
   }
 
   render(){
+    // Used to check app._id when clicking on Edit button
+    // console.log(this.props.app._id)
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form
+        className="application-form"
+        onSubmit={this.handleSubmit}
+      >
         <Input
           handleChange={this.handleChange}
           name={'status'}
@@ -79,7 +106,7 @@ class Form extends React.Component {
           name={'jobTitle'}
           type={'text'}
           value={this.state.jobTitle}
-          id={'dateSubmitted'}
+          id={'jobTitle'}
           placeholder={'Job Title'}
         /><br/>
         <Input
@@ -87,7 +114,7 @@ class Form extends React.Component {
           name={'company'}
           type={'text'}
           value={this.state.company}
-          id={'dateSubmitted'}
+          id={'company'}
           placeholder={'Company'}
         /><br/>
         <Input
@@ -95,7 +122,7 @@ class Form extends React.Component {
           name={'location'}
           type={'text'}
           value={this.state.location}
-          id={'dateSubmitted'}
+          id={'location'}
           placeholder={'Location'}
         /><br/>
         <Input
@@ -103,13 +130,14 @@ class Form extends React.Component {
           name={'link'}
           type={'text'}
           value={this.state.link}
-          id={'dateSubmitted'}
+          id={'link'}
           placeholder={'App Link'}
         /><br/>
-        <Input
+        <input
           type={'submit'}
-          value={'Add'}
+          value={this.props.app ? 'Update' : 'Add'}
         /><br/>
+        {this.props.children}
       </form>
     )
   }
