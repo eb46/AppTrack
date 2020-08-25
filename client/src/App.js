@@ -24,7 +24,6 @@ class App extends React.Component {
   // React function that runs upon pageload
   componentDidMount(){
     this.getApps()
-    console.log('component mount working');
   }
 
   // ADD REST route. Takes the response as the formInputs and takes a copy of the existing data and adds the new data from the formInputs
@@ -86,16 +85,11 @@ class App extends React.Component {
           toggleAdd={this.toggleAdd}
         />
 
-        {
-          this.state.showAdd
-          ?
-          <Form
-            handleSubmit={this.handleAdd}
-            toggleAdd={this.toggleAdd}
-          />
-          :
-          null
-        }
+        <Form
+          handleSubmit={this.handleAdd}
+          showAdd={this.state.showAdd}
+          toggleAdd={this.toggleAdd}
+        />
 
         <Dashboard
           getApps={this.getApps}

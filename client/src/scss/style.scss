@@ -1,9 +1,13 @@
 $sky-blue: rgb(42, 182, 246);
+$light-blue: #d3e7ee;
+$pastel-blue: #7097a8;
+
 
 body {
   padding: 0;
   margin: 0;
   height: 100%;
+  font-family: sans-serif;
 }
 
 .nav-container {
@@ -17,7 +21,60 @@ body {
 }
 
 .application-container {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .application-card {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    padding: 0 5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .application-card-buttons {
+      display: flex;
+      margin: 1em;
+
+      .application-card-delete, .application-card-edit {
+        border: none;
+        margin: .5em;
+        padding: 1em;
+      }
+      .application-card-delete {
+        background-color: gray;
+      }
+      .application-card-edit {
+        background-color: gray;
+      }
+    }
+
+    .application-data {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+
+      .application-data-fields {
+        background-color: $sky-blue;
+        border-left: 1px solid gray;
+        height: 100%;
+        padding: 2em;
+      }
+
+      .application-status {
+        width: 10em;
+      }
+      .application-company {
+        width: 12em;
+      }
+      .application-jobtitle {
+        width: 12em;
+      }
+    }
+  }
 }
 
 .add-app-button {
@@ -35,30 +92,214 @@ body {
   }
 }
 
-.application-form {
-  background-color: rgba(0,0,0,0.1);
-  position: absolute;
+.form-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  height: 50vh;
-  width: 100vw;
-  z-index: 1;
-  overflow: auto;
+  margin: auto;
+  background-color: white;
+  height: auto;
+  width: auto;
+  max-width: 50%;
+  max-height: 100vh;
+  min-width: 500px;
+  min-height: 400px;
+  position: absolute;
+  top: -100%;
+  right: 30%;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid gray;
+  z-index: 200;
+  transition: all .3s ease-in-out;
 
+  .form-cancel-div {
+    display: flex;
+    justify-content: flex-end;
+
+    .cancel-icon {
+      border: none;
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      padding: .3em .3em 1em 1em;
+    }
+  }
+
+  .application-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: auto;
+    width: auto;
+    overflow: auto;
+
+    input[type=date] {
+      color: $pastel-blue;
+      padding: .5em;
+
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+      }
+    }
+
+    .form-select {
+      color: $pastel-blue;
+      background-color: $light-blue;
+      border: none;
+      width: 31.2em;
+      height: 3.5em;
+      padding: .5em;
+
+      .form-select select {
+        color: white;
+      }
+    }
+
+    .form-input {
+      background-color: $light-blue;
+      width: 25em;
+      height: 2em;
+      font-size: 16px;
+      border: none;
+      padding: .5em;
+
+      &::placeholder {
+        color: $pastel-blue;
+      }
+    }
+
+    .form-buttons {
+      display: flex;
+      margin: 1em;
+
+      input {
+        background-color: $sky-blue;
+        color: white;
+        border: none;
+        width: 10em;
+        margin: .5em;
+        padding: 1em;
+      }
+    }
+  }
 }
 
+.form-open {
+  display: flex;
+  margin: auto;
+  background-color: white;
+  border: 1px solid gray;
+  height: auto;
+  width: auto;
+  max-width: 50%;
+  max-height: 100vh;
+  position: absolute;
+  top: 10vh;
+  z-index: 200;
+  transition: .3s ease-in-out;
+}
 
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 812px)
   and (-webkit-min-device-pixel-ratio: 3) {
 
-    .add-app-button {
-      height: 3em;
-      width: 10em;
+.add-app-button {
+  height: 3em;
+  width: 15em;
+}
+
+.main-container {
+  width: 100%;
+  margin: 0;
+}
+
+.form-open {
+  display: flex;
+  margin: auto;
+  background-color: gray;
+  height: auto;
+  width: auto;
+  max-width: 50%;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 200;
+  transition: .3s ease-in-out;
+}
+
+.form-container {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  max-width: 50%;
+  max-height: 100vh;
+  min-width: 100%;
+  min-height: 300px;
+  position: absolute;
+  z-index: 200;
+
+  .application-form {
+    top: 10vh;
+
+    .form-input {
+      width: auto;
+      height: 2em;
     }
 
+    .form-buttons {
+      display: flex;
+      margin: 1em;
+
+      input, button {
+        background-color: $sky-blue;
+        color: white;
+        border: none;
+        width: auto;
+        margin: .5em;
+        padding: 1em;
+      }
+    }
+  }
+}
+
+.application-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .application-card {
+    display: flex;
+    flex-direction: column;
+
+      .application-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        .application-data-fields {
+          border: 1px solid black;
+          padding: 2em;
+        }
+
+        .application-status {
+          width: 10em;
+        }
+        .application-company {
+          width: 8em;
+        }
+        .application-jobtitle {
+          width: 8em;
+        }
+      }
+    }
+  }
 }

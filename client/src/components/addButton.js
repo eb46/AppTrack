@@ -5,7 +5,7 @@ function AddButton(props){
   return(
     <button
       className="add-app-button"
-      onClick={toggleAdd}
+      onClick={() => props.toggleAdd()}
     >
       Add App
     </button>
