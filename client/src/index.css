@@ -268,18 +268,4 @@ body {
   }
 }
 
-.add-app-button {
-  background-color: blue;
-  border: none;
-  border-radius: 20px;
-  color: white;
-}
-
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
-  .add-app-button {
-    height: 3em;
-    width: 10em;
-  }
-}
-
 /*# sourceMappingURL=index.css.map */
