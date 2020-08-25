@@ -76,9 +76,6 @@ class Form extends React.Component {
       link: ''
     })
   }
-
-
-
   render(props){
     // Used to check app._id when clicking on Edit button
     // console.log(this.props.app._id)

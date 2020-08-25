@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import Input from './input'
-
+import React from 'react'
+import axios from 'axios'
+import Input from './input'
 
 class Edit extends React.Component {
   state = {
