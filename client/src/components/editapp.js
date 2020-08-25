@@ -1,4 +1,6 @@
-
+import React from 'react'
+import axios from 'axios'
+import Input from './input'
 import React from 'react'
 import axios from 'axios'
 import Input from './input'
@@ -76,7 +78,10 @@ class Edit extends React.Component {
         </button>
         { this.state.editForm
           ?
-          <form id={app._id} onSubmit={this.updateApp}>
+          <form
+            id={app._id}
+            onSubmit={this.updateApp}
+          >
             <Input
               name={'status'}
               type={'text'}
@@ -94,9 +99,9 @@ class Edit extends React.Component {
             <Input
               name={'jobTitle'}
               type={'text'}
-              value={this.state.updateTitle}
+              value={this.state.jobTitle}
               id={'jobTitle'}
-              placeholder={'Job Title'}
+              placeholder={this.state.jobTitle}
             /><br/>
             <Input
               name={'company'}

@@ -17,38 +17,54 @@ class Application extends React.Component {
     const { app, handleDelete, handleUpdate } = this.props
     return(
       <>
-        <div className="application-data">
-          <h5>{app.status}</h5>
-          <h5>{app.dateSubmitted}</h5>
-          <h5>{app.jobTitle}</h5>
-          <h5>{app.company}</h5>
-          <h5>{app.location}</h5>
-          <h5>{app.link}</h5>
-        </div>
-        <div className="application-buttons">
-          <button
-            onClick={() => handleDelete(app)
-          }>
-            Delete
-          </button>
-          <button onClick={this.toggleForm}>
-            Edit
-          </button>
-
-          { this.state.formVisible
-            ?
-            <Form
-              app={app}
-              handleSubmit={handleUpdate}
-              toggleForm={this.toggleForm}
+        <div className="application-card">
+          <div className="application-card-buttons">
+            <button
+              className="application-card-delete"
+              onClick={() => handleDelete(app)
+            }>
+              Delete
+            </button>
+            <button
+              className="application-card-edit"
+              onClick={this.toggleForm}
             >
-              <button onClick={this.toggleForm}>
-                Cancel
-              </button>
-            </Form>
-            :
-            null
-          }
+              Edit Status
+            </button>
+
+            { this.state.formVisible
+              ?
+              <Form
+                app={app}
+                handleSubmit={handleUpdate}
+                toggleForm={this.toggleForm}
+              >
+                <button onClick={this.toggleForm}>
+                  Cancel
+                </button>
+              </Form>
+              :
+              null
+            }
+            
+          </div>
+          <div className="application-data">
+            <h5
+              className="application-data-fields application-status"
+            >
+              {app.status}
+            </h5>
+            <h5
+              className="application-data-fields application-company"
+            >
+              {app.company}
+            </h5>
+            <h5
+              className="application-data-fields application-jobtitle"
+            >
+              {app.jobTitle}
+            </h5>
+          </div>
         </div>
       </>
     )
@@ -56,3 +72,11 @@ class Application extends React.Component {
 }
 
 export default Application
+
+
+// <h5 className="application-data-fields">{app.status}</h5>
+// <h5 className="application-data-fields">{app.dateSubmitted}</h5>
+// <h5 className="application-data-fields">{app.jobTitle}</h5>
+// <h5 className="application-data-fields">{app.company}</h5>
+// <h5 className="application-data-fields">{app.location}</h5>
+// <h5 className="application-data-fields">{app.link}</h5>
