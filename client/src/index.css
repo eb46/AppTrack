@@ -174,7 +174,7 @@ body {
   position: absolute;
   top: 10vh;
   z-index: 200;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
@@ -200,7 +200,7 @@ body {
     top: 0;
     right: 0;
     z-index: 200;
-    transition: 0.3s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
 
   .form-container {
