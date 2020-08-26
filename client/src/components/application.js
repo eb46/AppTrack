@@ -14,7 +14,7 @@ class Application extends React.Component {
   }
 
   render(){
-    const { app, handleDelete, handleUpdate } = this.props
+    const { app, handleDelete, handleUpdate, toggleAdd } = this.props
     return(
       <>
         <div className="application-card">
@@ -27,25 +27,10 @@ class Application extends React.Component {
             </button>
             <button
               className="application-card-edit"
-              onClick={this.toggleForm}
+              onClick={() => toggleAdd(app)}
             >
               Edit Status
             </button>
-
-            { this.state.formVisible
-              ?
-              <Form
-                app={app}
-                handleSubmit={handleUpdate}
-                toggleForm={this.toggleForm}
-              >
-                <button onClick={this.toggleForm}>
-                  Cancel
-                </button>
-              </Form>
-              :
-              null
-            }
 
           </div>
           <div className="application-data">
