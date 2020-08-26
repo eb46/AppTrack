@@ -78,9 +78,8 @@ class Form extends React.Component {
   }
   render(props){
     // Used to check app._id when clicking on Edit button
-    // console.log(this.props.app._id)
+    console.log(this.props.app)
     const { showAdd, toggleAdd } = this.props
-    console.log(toggleAdd);
     return(
       <div className={showAdd ? "form-container form-open" : "form-container form-close"}>
         <div className="form-cancel-div">

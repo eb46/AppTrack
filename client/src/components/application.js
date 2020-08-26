@@ -46,7 +46,7 @@ class Application extends React.Component {
               :
               null
             }
-            
+
           </div>
           <div className="application-data">
             <h5

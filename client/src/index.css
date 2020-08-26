@@ -3,6 +3,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: sans-serif;
+  background-color: #faf9ff;
 }
 
 .nav-container {
@@ -16,14 +17,18 @@ body {
 
 .application-container {
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
 }
 .application-container .application-card {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 10px;
+  flex-direction: column;
   width: auto;
   height: auto;
   max-width: 100%;
-  padding: 0 5em;
+  padding: 1em;
+  margin: 1em;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -33,36 +38,40 @@ body {
   margin: 1em;
 }
 .application-container .application-card .application-card-buttons .application-card-delete, .application-container .application-card .application-card-buttons .application-card-edit {
-  border: none;
-  margin: 0.5em;
+  border: 1px solid white;
   padding: 1em;
 }
 .application-container .application-card .application-card-buttons .application-card-delete {
-  background-color: gray;
+  background-color: black;
+  color: white;
 }
 .application-container .application-card .application-card-buttons .application-card-edit {
-  background-color: gray;
+  background-color: black;
+  color: white;
 }
 .application-container .application-card .application-data {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 .application-container .application-card .application-data .application-data-fields {
   background-color: #2ab6f6;
-  border-left: 1px solid gray;
+  border: 1px solid gray;
   height: 100%;
   padding: 2em;
+  margin: 0.1em;
+  text-align: center;
 }
 .application-container .application-card .application-data .application-status {
-  width: 10em;
+  width: 8em;
 }
 .application-container .application-card .application-data .application-company {
-  width: 12em;
+  width: 8em;
 }
 .application-container .application-card .application-data .application-jobtitle {
-  width: 12em;
+  width: 8em;
 }
 
 .add-app-button {
@@ -91,7 +100,7 @@ body {
   min-width: 500px;
   min-height: 400px;
   position: absolute;
-  top: -100%;
+  top: -110%;
   right: 30%;
   padding: 1em;
   border-radius: 10px;
