@@ -42,12 +42,12 @@ class Form extends React.Component {
     event.preventDefault()
     if (this.props.app) {
       this.props.handleSubmit(event, {
-        status: this.state.status,
-        dateSubmitted: this.state.dateSubmitted,
-        jobTitle: this.state.jobTitle,
-        company: this.state.company,
-        location: this.state.location,
-        link: this.state.link,
+        status: this.state.updateStatus,
+        dateSubmitted: this.state.updateDate,
+        jobTitle: this.state.updateTitle,
+        company: this.state.updateCompany,
+        location: this.state.updateLocation,
+        link: this.state.updateLink,
 
         // Important! Be sure to grab ID from props so formInputs on handleUpdate function work.
         id: this.props.app._id
@@ -78,8 +78,8 @@ class Form extends React.Component {
   }
   render(props){
     // Used to check app._id when clicking on Edit button
-    console.log(this.props.app)
-    const { showAdd, toggleAdd } = this.props
+    // console.log(this.props.app)
+    const { app, showAdd, toggleAdd } = this.props
     return(
       <div className={showAdd ? "form-container form-open" : "form-container form-close"}>
         <div className="form-cancel-div">
@@ -123,18 +123,7 @@ class Form extends React.Component {
             id={'dateSubmitted'}
             placeholder={'Date Submitted'}
           /><br/>
-          { this.props.app
-            ?
-            <Input
-              handleChange={this.handleChange}
-              name={'jobTitle'}
-              type={'text'}
-              value={this.props.app.jobTitle}
-              id={'jobTitle'}
-              placeholder={'Job Title'}
-            />
-            :
-            <Input
+          <Input
               handleChange={this.handleChange}
               name={'jobTitle'}
               type={'text'}
@@ -142,7 +131,7 @@ class Form extends React.Component {
               id={'jobTitle'}
               placeholder={'Job Title'}
             />
-          }<br/>
+          <br/>
           <Input
             handleChange={this.handleChange}
             name={'company'}
@@ -170,7 +159,7 @@ class Form extends React.Component {
           <div className="form-buttons">
             <input
               type={'submit'}
-              value={this.props.app ? 'Update' : 'Add'}
+              value={'Add'}
             /><br/>
             {this.props.children}
           </div>

@@ -37,8 +37,6 @@ class App extends React.Component {
           apps: [jsonApps.data, ...this.state.apps]
         })
         this.getApps()
-        // console.log(this.state.apps);
-        console.log(jsonApps.data);
       }
     )
   }
@@ -73,7 +71,7 @@ class App extends React.Component {
   }
 
   // Sets the state used to reveal form to add app entries
-  toggleAdd = () => {
+  toggleAdd = (app) => {
     this.setState((prevState) => {
       return {showAdd: !prevState.showAdd}
     })

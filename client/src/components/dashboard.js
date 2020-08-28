@@ -7,12 +7,13 @@ function Dashboard(props) {
 
   return(
     <div className="application-container">
-      {apps.map((app) =>
+      {apps.map((app, index) =>
         <Application
           handleDelete={handleDelete}
           handleUpdate={handleUpdate}
           toggleAdd={toggleAdd}
-          key={app._id}
+          key={index}
+          id={app._id}
           app={app}
         />
       )}

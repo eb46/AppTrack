@@ -1,6 +1,5 @@
 import React from 'react'
 import Edit from './editapp'
-import Form from './form'
 
 class Application extends React.Component {
   state = {
@@ -14,6 +13,7 @@ class Application extends React.Component {
   }
 
   render(){
+    // console.log(this.props.app);
     const { app, handleDelete, handleUpdate, toggleAdd } = this.props
     return(
       <>
@@ -27,29 +27,37 @@ class Application extends React.Component {
             </button>
             <button
               className="application-card-edit"
-              onClick={() => toggleAdd(app)}
+              onClick={this.toggleForm}
             >
               Edit Status
             </button>
 
           </div>
-          <div className="application-data">
-            <h5
-              className="application-data-fields application-status"
-            >
-              {app.status}
-            </h5>
-            <h5
-              className="application-data-fields application-company"
-            >
-              {app.company}
-            </h5>
-            <h5
-              className="application-data-fields application-jobtitle"
-            >
-              {app.jobTitle}
-            </h5>
-          </div>
+
+          {this.state.formVisible
+            ?
+              <Edit
+                app={app}
+              />
+            :
+            <div className="application-data">
+              <h5
+                className="application-data-fields application-status"
+              >
+                {app.status}
+              </h5>
+              <h5
+                className="application-data-fields application-company"
+              >
+                {app.company}
+              </h5>
+              <h5
+                className="application-data-fields application-jobtitle"
+              >
+                {app.jobTitle}
+              </h5>
+            </div>
+          }
         </div>
       </>
     )

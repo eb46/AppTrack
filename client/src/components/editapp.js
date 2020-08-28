@@ -7,19 +7,26 @@ class Edit extends React.Component {
     editForm: false
   }
 
+  getApps = () => {
+    axios
+      .get('/applications')
+      .then(response => this.setState({
+          apps: response.data
+      })
+    )
+  }
+
   // Update REST route
   updateApp = (event, formInputs) => {
     event.preventDefault()
+    console.log(this.state.updateStatus);
     const id = event.target.getAttribute('id')
     axios
       .put('/applications/' + id, formInputs)
-      .then(
-          response => {
-            this.setState({
-              apps: response.data
-            })
-          }
-      )
+      .then(() => {
+        this.getApps()
+      }
+      ).catch(error => console.log(error))
   }
 
   editStatus = event => {
@@ -29,12 +36,14 @@ class Edit extends React.Component {
   }
 
   editDate = event => {
+    console.log(event.target.value);
     this.setState({
       updateDate: event.target.value
     })
   }
 
   editTitle = event => {
+    console.log(this.state.updateTitle);
     this.setState({
       updateTitle: event.target.value
     })
@@ -68,67 +77,74 @@ class Edit extends React.Component {
 
   render(){
     const { app } = this.props
+
     return(
       <div>
-        <button onClick={this.toggleEditForm}>
-          Edit
-        </button>
-        { this.state.editForm
-          ?
           <form
+            app={app}
             id={app._id}
             onSubmit={this.updateApp}
           >
-            <Input
-              name={'status'}
-              type={'text'}
-              value={this.state.updateStatus}
-              id={'status'}
-              placeholder={'Status'}
+            <select
+              className="form-select"
+              onChange={this.editStatus}
+              name='status'
+              id='status'
+            >
+              <option className="form-input">
+                --
+              </option>
+              <option className="form-input">
+                Applied
+              </option>
+              <option className="form-input">
+                Interview Scheduled
+              </option>
+              <option className="form-input">
+                Offered
+              </option>
+            </select>
+            ><br/>
+            <input
+              name='dateSubmitted'
+              type='date'
+              onChange={this.editDate}
+              id='dateSubmitted'
+              placeholder='Date Submitted'
             /><br/>
-            <Input
-              name={'dateSubmitted'}
-              type={'text'}
-              value={this.state.updateDate}
-              id={'dateSubmitted'}
-              placeholder={'Date Submitted'}
+            <input
+              name='jobTitle'
+              type='text'
+              onChange={this.editTitle}
+              id='jobTitle'
+              placeholder={this.props.app.jobTitle}
             /><br/>
-            <Input
-              name={'jobTitle'}
-              type={'text'}
-              value={this.state.jobTitle}
-              id={'jobTitle'}
-              placeholder={this.state.jobTitle}
+            <input
+              name='company'
+              type='text'
+              onChange={this.editCompany}
+              id='company'
+              placeholder={this.props.app.company}
             /><br/>
-            <Input
-              name={'company'}
-              type={'text'}
-              value={this.state.updateCompany}
-              id={'company'}
-              placeholder={'Company'}
+            <input
+              name='location'
+              type='text'
+              onChange={this.editLocation}
+              id='location'
+              placeholder={this.props.app.location}
             /><br/>
-            <Input
-              name={'location'}
-              type={'text'}
-              value={this.state.updateLocation}
-              id={'location'}
-              placeholder={'Location'}
+            <input
+              name='link'
+              type='text'
+              onChange={this.editLink}
+              id='link'
+              placeholder={this.props.app.link}
             /><br/>
-            <Input
-              name={'link'}
-              type={'text'}
-              value={this.state.updateLink}
-              id={'link'}
-              placeholder={'Link'}
-            /><br/>
-            <Input
-              type={'submit'}
-              value={'Edit'}
+            <input
+              type='submit'
+              value='Edit'
             /><br/>
           </form>
-          :
-          null
-        }
       </div>
     )
   }
