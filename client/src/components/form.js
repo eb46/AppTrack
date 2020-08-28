@@ -108,6 +108,9 @@ class Form extends React.Component {
             <option className="form-input" value="Applied">
               Applied
             </option>
+            <option className="form-input" value="Code Assessment">
+              Code Assessment
+            </option>
             <option className="form-input" value="Interview scheduled">
               Interview scheduled
             </option>

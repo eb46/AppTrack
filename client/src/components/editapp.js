@@ -4,66 +4,67 @@ import Input from './input'
 
 class Edit extends React.Component {
   state = {
-    editForm: false
-  }
-
-  getApps = () => {
-    axios
-      .get('/applications')
-      .then(response => this.setState({
-          apps: response.data
-      })
-    )
+    editForm: false,
+    status: '',
+    dateSubmitted: '',
+    jobTitle: '',
+    company: '',
+    location: '',
+    link: ''
   }
 
   // Update REST route
   updateApp = (event, formInputs) => {
-    event.preventDefault()
-    console.log(this.state.updateStatus);
     const id = event.target.getAttribute('id')
     axios
-      .put('/applications/' + id, formInputs)
+      .put('/applications/' + id, {
+        status: this.state.status,
+        dateSubmitted: this.state.dateSubmitted,
+        jobTitle: this.state.jobTitle,
+        company: this.state.company,
+        location: this.state.location,
+        link: this.state.link
+      })
       .then(() => {
-        this.getApps()
+
       }
       ).catch(error => console.log(error))
   }
 
   editStatus = event => {
     this.setState({
-      updateStatus: event.target.value
+      status: event.target.value
     })
   }
 
   editDate = event => {
     console.log(event.target.value);
     this.setState({
-      updateDate: event.target.value
+      dateSubmitted: event.target.value
     })
   }
 
   editTitle = event => {
-    console.log(this.state.updateTitle);
     this.setState({
-      updateTitle: event.target.value
+      jobTitle: event.target.value
     })
   }
 
   editCompany = event => {
     this.setState({
-      updateCompany: event.target.value
+      company: event.target.value
     })
   }
 
   editLocation = event => {
     this.setState({
-      updateLocation: event.target.value
+      location: event.target.value
     })
   }
 
   editLink = event => {
     this.setState({
-      updateLink: event.target.value
+      link: event.target.value
     })
   }
 
@@ -96,6 +97,9 @@ class Edit extends React.Component {
               </option>
               <option className="form-input">
                 Applied
+              </option>
+              <option className="form-input">
+                Code Assessment
               </option>
               <option className="form-input">
                 Interview Scheduled
