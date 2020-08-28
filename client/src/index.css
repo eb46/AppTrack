@@ -3,7 +3,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: sans-serif;
-  background-color: #faf9ff;
+  background-color: #f3f7f7;
 }
 
 .nav-container {
@@ -21,7 +21,8 @@ body {
 }
 .application-container .application-card {
   display: flex;
-  border: 1px solid gray;
+  background-color: white;
+  box-shadow: 1px 1px 5px #c8c8c8;
   border-radius: 10px;
   flex-direction: column;
   width: auto;

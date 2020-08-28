@@ -7,7 +7,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: sans-serif;
-  background-color: rgb(250, 249, 255);
+  background-color: rgb(243, 247, 247);
 }
 
 .nav-container {
@@ -26,7 +26,8 @@ body {
 
   .application-card {
     display: flex;
-    border: 1px solid gray;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgb(200, 200, 200);
     border-radius: 10px;
     flex-direction: column;
     width: auto;
