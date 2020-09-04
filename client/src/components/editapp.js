@@ -107,6 +107,9 @@ class Edit extends React.Component {
               <option className="form-input">
                 Offered
               </option>
+              <option className="form-input">
+                Rejected
+              </option>
             </select>
             ><br/>
             <input
@@ -114,35 +117,35 @@ class Edit extends React.Component {
               type='date'
               onChange={this.editDate}
               id='dateSubmitted'
-              placeholder='Date Submitted'
+              defaultValue={this.props.app.editDate}
             /><br/>
             <input
               name='jobTitle'
               type='text'
               onChange={this.editTitle}
               id='jobTitle'
-              placeholder={this.props.app.jobTitle}
+              defaultValue={this.props.app.jobTitle}
             /><br/>
             <input
               name='company'
               type='text'
               onChange={this.editCompany}
               id='company'
-              placeholder={this.props.app.company}
+              defaultValue={this.props.app.company}
             /><br/>
             <input
               name='location'
               type='text'
               onChange={this.editLocation}
               id='location'
-              placeholder={this.props.app.location}
+              defaultValue={this.props.app.location}
             /><br/>
             <input
               name='link'
               type='text'
               onChange={this.editLink}
               id='link'
-              placeholder={this.props.app.link}
+              defaultValue={this.props.app.link}
             /><br/>
             <input
               type='submit'
