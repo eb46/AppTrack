@@ -77,11 +77,16 @@ class App extends React.Component {
     })
   }
 
+  handleLogin = () => {
+    console.log('login button working');
+  }
+
   render() {
     return (
       <div className="main-container">
         <Nav
           toggleAdd={this.toggleAdd}
+          handleLogin={this.handleLogin}
         />
 
         <Form
