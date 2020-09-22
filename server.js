@@ -40,6 +40,10 @@ app.use('/applications', applications)
 if (process.env.NODE_ENV === 'production') {
   // Exprees will serve up production assets
   app.use(express.static('client/build'));
+<<<<<<< HEAD:server.js
+=======
+
+>>>>>>> 901ec29bceb6aa73789d986a51dc78a58fc742d7:server/server.js
   // Express serve up index.html file if it doesn't recognize route
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
