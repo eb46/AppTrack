@@ -3,10 +3,6 @@ Application built to track jobs you have applied to.
 
 - Users can create new entries, and update and delete existing ones.
 
-# Features in-progress
-- User authentication
-- One-to-many relationship between user and applications
-
 ### Live Link
 - [App Track](https://myapptrack.herokuapp.com/)
 
@@ -19,3 +15,7 @@ Application built to track jobs you have applied to.
 - Express
 - Express Session
 - Bcrypt
+
+### Features in-progress
+- User authentication
+- One-to-many relationship between user and applications
